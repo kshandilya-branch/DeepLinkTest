@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import org.json.JSONObject;
 
@@ -15,10 +16,13 @@ import io.branch.referral.ServerRequestGetLATD;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView textView = findViewById(R.id.textView);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textView = findViewById(R.id.textView);
     }
 
     @Override
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         if(error!=null){
             Log.d("Branch", ": "+error);
         }
+        textView.setText(linkProperties.toString());
         Log.d("SDK response : ", "onInitFinished: " + linkProperties.toString());
     };
 
